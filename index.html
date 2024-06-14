@@ -4,45 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo Anestesia Leben</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Grupo Anestesia Leben</h1>
-        <nav>
-            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-            <ul id="menu">
-                <li><a href="#" onclick="showSection('programacion')">Programación Semanal</a></li>
-                <li><a href="#" onclick="showSection('guardias')">Guardias y Vacaciones</a></li>
-                <li><a href="#" onclick="showSection('facturacion')">Facturación y Nomenclado</a></li>
-                <li><a href="#" onclick="showSection('liquidaciones')">Liquidaciones e Ingresos</a></li>
-                <li><a href="#" onclick="showSection('estatuto')">Estatuto y Datos S.A.</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <button onclick="showSection('programacion')">Programación semanal</button>
+        <button onclick="showSection('guardias')">Guardias y Vacaciones</button>
+        <button onclick="showSection('facturacion')">Facturación y nomenclado</button>
+        <button onclick="showSection('liquidaciones')">Liquidaciones e ingresos</button>
+        <button onclick="showSection('estatuto')">Estatuto y datos S.A.</button>
+    </nav>
     <main>
         <section id="programacion" class="content-section">
-            <h2>Programación Semanal</h2>
-            <!-- Contenido de Programación Semanal -->
+            <h2>Programación semanal</h2>
+            <p>Contenido de Programación semanal...</p>
         </section>
-        <section id="guardias" class="content-section" style="display: none;">
+        <section id="guardias" class="content-section" style="display:none;">
             <h2>Guardias y Vacaciones</h2>
-            <!-- Contenido de Guardias y Vacaciones -->
+            <p>Contenido de Guardias y Vacaciones...</p>
         </section>
-        <section id="facturacion" class="content-section" style="display: none;">
-            <h2>Facturación y Nomenclado</h2>
-            <!-- Contenido de Facturación y Nomenclado -->
+        <section id="facturacion" class="content-section" style="display:none;">
+            <h2>Facturación y nomenclado</h2>
+            <p>Contenido de Facturación y nomenclado...</p>
         </section>
-        <section id="liquidaciones" class="content-section" style="display: none;">
-            <h2>Liquidaciones e Ingresos</h2>
-            <!-- Contenido de Liquidaciones e Ingresos -->
+        <section id="liquidaciones" class="content-section" style="display:none;">
+            <h2>Liquidaciones e ingresos</h2>
+            <p>Contenido de Liquidaciones e ingresos...</p>
         </section>
-        <section id="estatuto" class="content-section" style="display: none;">
-            <h2>Estatuto y Datos S.A.</h2>
-            <!-- Contenido de Estatuto y Datos S.A. -->
+        <section id="estatuto" class="content-section" style="display:none;">
+            <h2>Estatuto y datos S.A.</h2>
+            <p>Contenido de Estatuto y datos S.A....</p>
         </section>
     </main>
-    <script src="js/scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
