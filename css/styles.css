@@ -65,3 +65,50 @@ h2 {
     }
 }
 
+/* Additional styles for mobile menu */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        text-align: left;
+    }
+    
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    nav ul li a {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 18px;
+    }
+    
+    nav ul li a {
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    .content-section {
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+}
