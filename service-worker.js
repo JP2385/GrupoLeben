@@ -1,9 +1,9 @@
 const CACHE_NAME = 'grupo-anestesia-leben-cache';
 const urlsToCache = [
   '/',
-  '/styles.css',
-  '/scripts.js',
-  '/manifest.json',
+  '/css/styles.css',
+  '/js/scripts.js',
+  '/json/manifest.json',
   '/images/icons/icon-192x192.png',
   '/images/icons/icon-512x512.png'
 ];
