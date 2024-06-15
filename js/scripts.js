@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Registrar el Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/js/sw.js').then(function(registration) {
+        navigator.serviceWorker.register('./js/sw.js').then(function(registration) {
             console.log('Service Worker registered with scope:', registration.scope);
         }).catch(function(error) {
             console.log('Service Worker registration failed:', error);
@@ -29,3 +29,4 @@ function showSection(sectionId) {
 
     document.getElementById(sectionId).style.display = 'block';
 }
+
