@@ -31,6 +31,7 @@ nav button {
     margin: 0.5rem;
     flex: 1 1 calc(50% - 1rem); /* Two buttons per row */
     box-sizing: border-box;
+    border-radius: 10px; /* Rounded corners */
 }
 
 nav button:hover {
@@ -63,6 +64,8 @@ h2 {
     margin: 0.5rem;
     transition: background-color 0.3s, transform 0.3s;
     border-radius: 5px;
+    width: calc(100% - 1rem); /* Full width minus margin */
+    box-sizing: border-box;
 }
 
 .content-section button:hover {
@@ -103,3 +106,4 @@ h2 {
         padding: 0.75rem;
     }
 }
+
