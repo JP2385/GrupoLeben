@@ -17,14 +17,15 @@ header {
 }
 
 header img.app-logo {
-    height: 120%; /* Increase size by 20% */
+    height: 150%; /* Increase size by 50% */
     max-height: 3.75rem; /* Adjust max-height accordingly */
     margin-right: 1rem;
     position: absolute; /* Position logo absolutely */
+    left: 0.25rem; /* Align to the left with some padding */
 }
 
 header h1 {
-    font-size: 2.5rem; /* Make the h1 smaller */
+    font-size: 1.5rem; /* Make the h1 smaller */
     margin: 0;
     flex: 1; /* Allow h1 to take up remaining space */
 }
@@ -44,6 +45,8 @@ nav button {
     padding: 1rem 2rem;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bold; /* Make text bold */
+    text-transform: uppercase; /* Transform text to uppercase */
     transition: background-color 0.3s, box-shadow 0.3s;
     margin: 0.5rem;
     flex: 1 1 calc(50% - 1rem); /* Two buttons per row */
@@ -143,4 +146,3 @@ h2 {
         padding: 0.75rem;
     }
 }
-
