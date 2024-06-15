@@ -17,11 +17,10 @@ header {
 }
 
 header img.app-logo {
-    height: 120%; /* Increase size by 50% */
+    height: 120%; /* Increase size by 20% */
     max-height: 3.75rem; /* Adjust max-height accordingly */
     margin-right: 1rem;
     position: absolute; /* Position logo absolutely */
-    left: 1rem; /* Align to the left with some padding */
 }
 
 header h1 {
