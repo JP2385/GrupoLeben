@@ -1,10 +1,10 @@
 {
   "name": "Grupo Anestesia Leben",
-  "short_name": "Anestesia",
-  "start_url": "/",
+  "short_name": "Leben",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#004080",
+  "theme_color": "#0056b3",
   "icons": [
     {
       "src": "/images/icons/icon-192x192.png",
