@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Función para abrir la hoja de cálculo
     window.openSpreadsheet = function() {
-        const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1VS3zsNmYvCeJTGgA1AlqovMaFurvjrZ_/edit?usp=sharing&ouid=116849778907664010256&rtpof=true&sd=true';
+        const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1IIAo4YHyBavQmA7iN3xVwhW9NncDwYU-3PpnL81d4TE/edit?usp=sharing';
         window.open(spreadsheetUrl, '_blank');
     }
 });
