@@ -44,15 +44,20 @@ nav button {
     padding: 1rem 2rem;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     margin: 0.5rem;
     flex: 1 1 calc(50% - 1rem); /* Two buttons per row */
     box-sizing: border-box;
     border-radius: 10px; /* Rounded corners */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spacing between letters */
+    font-weight: bold; /* Bold text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 nav button:hover {
     background-color: #003f7f;
+    transform: translateY(-2px); /* Lift the button slightly */
 }
 
 main {
@@ -83,17 +88,15 @@ h2 {
     border-radius: 5px;
     width: calc(100% - 1rem); /* Full width minus margin */
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spacing between letters */
+    font-weight: bold; /* Bold text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .content-section button:hover {
     background-color: #003f7f;
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Lift the button slightly */
 }
 
 .content-section button:active {
@@ -113,20 +116,23 @@ h2 {
 
 @media (max-width: 480px) {
     header {
-        justify-content: flex-start; /* Align items to the left */
-        padding: 0.5rem; /* Reduce padding */
+        justify-content: flex-start; /* Align items to the start */
+        padding: 0.5rem 1rem; /* Adjust padding for mobile */
     }
 
     header img.app-logo {
-        position: relative; /* Change position to relative for better flow */
-        height: 50px; /* Adjust size for mobile */
-        max-height: 50px; /* Set max height */
-        margin-right: 0.5rem; /* Reduce margin */
+        position: static; /* Change position to static for better flow */
+        height: 100%; /* Adjust size for mobile */
+        max-height: 2.5rem; /* Smaller max height for mobile */
+        margin-right: 0.5rem; /* Margin to the right for spacing */
     }
 
     header h1 {
         font-size: 1.25rem; /* Slightly smaller font size */
-        margin: 0;
+        margin: 0; /* Remove default margin */
+        white-space: nowrap; /* Prevent text wrapping */
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Show ellipsis for overflow */
     }
 
     nav {
@@ -146,3 +152,4 @@ h2 {
         padding: 0.75rem;
     }
 }
+
