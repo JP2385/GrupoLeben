@@ -17,7 +17,7 @@ header {
 }
 
 header img.app-logo {
-    height: 120%; /* Increase size by 50% */
+    height: 150%; /* Increase size by 50% */
     max-height: 3.75rem; /* Adjust max-height accordingly */
     margin-right: 1rem;
     position: absolute; /* Position logo absolutely */
@@ -25,7 +25,7 @@ header img.app-logo {
 }
 
 header h1 {
-    font-size: 2.5rem; /* Make the h1 smaller */
+    font-size: 1.5rem; /* Make the h1 smaller */
     margin: 0;
 }
 
@@ -107,7 +107,8 @@ h2 {
 
 @media (max-width: 480px) {
     header {
-        flex-direction: column; /* Stack the logo and h1 vertically */
+        flex-direction: row-reverse; /* Reverse the order: logo to the right */
+        justify-content: space-between; /* Space out logo and h1 */
     }
 
     header img.app-logo {
@@ -115,7 +116,7 @@ h2 {
         height: 100%; /* Adjust size for mobile */
         max-height: 2.5rem; /* Smaller max height for mobile */
         margin-right: 0;
-        margin-bottom: 0.5rem; /* Add margin below logo */
+        margin-left: 1rem; /* Add margin to the left of the logo */
     }
 
     header h1 {
