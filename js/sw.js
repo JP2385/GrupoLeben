@@ -1,4 +1,3 @@
-// /js/sw.js
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
@@ -8,8 +7,12 @@ self.addEventListener('install', function(event) {
                 '/css/styles.css',
                 '/js/scripts.js',
                 '/json/manifest.json',
+                '/images/icons/icon-192x192.png',
+                '/images/icons/icon-512x512.png'
                 // Add other resources you want to cache
-            ]);
+            ]).catch(function(error) {
+                console.error('Failed to cache', error);
+            });
         })
     );
 });
