@@ -83,6 +83,12 @@ h2 {
     border-radius: 5px;
     width: calc(100% - 1rem); /* Full width minus margin */
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .content-section button:hover {
@@ -107,20 +113,20 @@ h2 {
 
 @media (max-width: 480px) {
     header {
-        flex-direction: row-reverse; /* Reverse the order: logo to the right */
-        justify-content: space-between; /* Space out logo and h1 */
+        justify-content: flex-start; /* Align items to the left */
+        padding: 0.5rem; /* Reduce padding */
     }
 
     header img.app-logo {
-        position: static; /* Change position to static for better flow */
-        height: 100%; /* Adjust size for mobile */
-        max-height: 2.5rem; /* Smaller max height for mobile */
-        margin-right: 0;
-        margin-left: 1rem; /* Add margin to the left of the logo */
+        position: relative; /* Change position to relative for better flow */
+        height: 50px; /* Adjust size for mobile */
+        max-height: 50px; /* Set max height */
+        margin-right: 0.5rem; /* Reduce margin */
     }
 
     header h1 {
         font-size: 1.25rem; /* Slightly smaller font size */
+        margin: 0;
     }
 
     nav {
