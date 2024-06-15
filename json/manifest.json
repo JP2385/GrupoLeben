@@ -1,7 +1,7 @@
 {
   "name": "Grupo Anestesia Leben",
   "short_name": "Leben",
-  "start_url": "./index.html",
+  "start_url": "../index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0056b3",
