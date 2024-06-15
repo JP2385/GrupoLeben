@@ -54,7 +54,7 @@ h2 {
 
 /* Specific styles for buttons inside "Guardias y Vacaciones" section */
 #guardias button {
-    background-color: #28a745;
+    background-color: #0056b3;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -66,12 +66,12 @@ h2 {
 }
 
 #guardias button:hover {
-    background-color: #218838;
+    background-color: #003f7f;
     transform: translateY(-2px);
 }
 
 #guardias button:active {
-    background-color: #1e7e34;
+    background-color: #003f7f;
     transform: translateY(0);
 }
 
@@ -103,4 +103,3 @@ h2 {
         padding: 0.75rem;
     }
 }
-
