@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const SHEET_ID = '1VS3zsNmYvCeJTGgA1AlqovMaFurvjrZ_';
-    const SHEET_NAME = 'AIzaSyDvAqHTOqU0i151cbB3Amdyn1D91RlRf_c'; // Ajusta esto si tu hoja tiene un nombre diferente
+    const SHEET_NAME = 'Vacaciones y Guardias 2024'; // Ajusta esto si tu hoja tiene un nombre diferente
     const API_KEY = 'YOUR_API_KEY'; // Reemplaza con tu API Key
     const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
 
