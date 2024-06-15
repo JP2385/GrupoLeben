@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const SHEET_ID = '1VS3zsNmYvCeJTGgA1AlqovMaFurvjrZ_';
     const SHEET_NAME = 'Sheet1'; // Ajusta esto si tu hoja tiene un nombre diferente
-    const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=YOUR_API_KEY`;
+    const API_KEY = AIzaSyDvAqHTOqU0i151cbB3Amdyn1D91RlRf_c; // Reemplaza con tu API Key
+    const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
 
     // Elemento del DOM para el contenido
     const content = document.getElementById('guardias_content');
@@ -31,3 +32,4 @@ document.addEventListener('DOMContentLoaded', function() {
             content.innerHTML = 'Error: ' + error.message;
         });
 });
+
