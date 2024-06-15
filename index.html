@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo Anestesia Leben</title>
+    <title>Anestesiólogos del Valle</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="json/manifest.json">
     <meta name="theme-color" content="#0056b3">
@@ -14,19 +14,16 @@
         <h1>Grupo Anestesia Leben</h1>
     </header>
     <nav>
-        <button onclick="showSection('programacion')">Programación semanal</button>
-        <button onclick="showSection('guardias')">Guardias y Vacaciones</button>
+        <button onclick="showSection('programacion')">Programación</button>
         <button onclick="showSection('facturacion')">Facturación y Nomenclado</button>
         <button onclick="showSection('liquidaciones')">Liquidaciones e Ingresos</button>
         <button onclick="showSection('estatuto')">Estatuto y Datos S.A.</button>
+        <button onclick="showSection('materiales')">Materiales</button>
     </nav>
     <main>
         <section id="programacion" class="content-section">
-            <h2>Programación semanal</h2>
-            <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/18tNvZEY2VWkf3m5V7UnT1-yCWYDVAp6GggHg9hvsP0A/edit?usp=sharing')">Ver Programación Semanal</button>
-        </section>
-        <section id="guardias" class="content-section" style="display:none;">
-            <h2>Guardias y Vacaciones</h2>
+            <h2>Programación</h2>
+            <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/18tNvZEY2VWkf3m5V7UnT1-yCWYDVAp6GggHg9hvsP0A/edit?usp=sharing')">Programación Semanal</button>
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1IIAo4YHyBavQmA7iN3xVwhW9NncDwYU-3PpnL81d4TE/edit?usp=sharing')">Vacaciones y Guardias 2024</button>
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1CBU7nXGDil2BPH5Ow2KOA7YgT9-LyGmtJSqBaOOmwng/edit?usp=drive_link')">Vacaciones y Guardias 2025</button>
         </section>
@@ -40,6 +37,9 @@
         </section>
         <section id="estatuto" class="content-section" style="display:none;">
             <h2>Estatuto y Datos S.A.</h2>
+        </section>
+        <section id="materiales" class="content-section" style="display:none;">
+            <h2>Materiales</h2>
         </section>
     </main>
 </body>
