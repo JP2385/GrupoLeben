@@ -25,9 +25,10 @@ header img.app-logo {
 }
 
 header h1 {
-    font-size: 1.5rem; /* Make the h1 smaller */
+    font-size: 2.5rem; /* Make the h1 smaller */
     margin: 0;
     flex: 1; /* Allow h1 to take up remaining space */
+    text-align: center; /* Center text */
 }
 
 nav {
@@ -112,12 +113,12 @@ h2 {
 
 @media (max-width: 480px) {
     header {
-        justify-content: flex-start; /* Align content to the start */
+        justify-content: center; /* Align content to the center */
     }
 
     header img.app-logo {
         position: relative; /* Change position to relative */
-        height: 100%; /* Adjust size for mobile */
+        height: auto; /* Adjust size for mobile */
         max-height: 2.5rem; /* Smaller max height for mobile */
         margin-right: 1rem; /* Ensure space between logo and h1 */
     }
@@ -125,8 +126,6 @@ h2 {
     header h1 {
         font-size: 1.25rem; /* Slightly smaller font size */
         text-align: center; /* Center text */
-        margin-left: auto; /* Ensure h1 is centered */
-        margin-right: auto;
     }
 
     nav {
