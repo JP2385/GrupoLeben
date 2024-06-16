@@ -21,4 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.getElementById(sectionId).style.display = 'block';
     }
+
+    // Función para toggle de fechas de reuniones
+    window.toggleMeetingDates = function() {
+        const meetingDates = document.getElementById('meeting-dates');
+        if (meetingDates.style.display === 'none') {
+            meetingDates.style.display = 'block';
+        } else {
+            meetingDates.style.display = 'none';
+        }
+    }
 });
+
