@@ -18,7 +18,7 @@
         <button onclick="showSection('programacion')">Programación</button>
         <button onclick="showSection('facturacion')">Facturación y Nomenclado</button>
         <button onclick="showSection('liquidaciones')">Liquidaciones e Ingresos</button>
-        <button onclick="showSection('estatuto')">Estatuto y Datos S.A.</button>
+        <button onclick="showSection('reuniones')">Reuniones y Estatuto</button>
         <button onclick="showSection('materiales')">Materiales</button>
     </nav>
     <main>
@@ -48,8 +48,19 @@
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1WYAOKb_rZm2w7A5DpahQUIqDfiGg5g08/edit?usp=sharing&ouid=116849778907664010256&rtpof=true&sd=true')">Resumen de Liquidaciones</button>
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1JnBnYbzCKj_T5j-um0dXNMVD596wvwYS/edit?usp=sharing&ouid=116849778907664010256&rtpof=true&sd=true')">Resumen de Ingresos</button>
         </section>
-        <section id="estatuto" class="content-section" style="display:none;">
-            <h2>Estatuto y Datos S.A.</h2>
+        <section id="reuniones" class="content-section" style="display:none;">
+            <h2>Reuniones y Estatuto</h2>
+            <button onclick="toggleMeetingDates()">Fechas reuniones</button>
+            <ul id="meeting-dates" style="display:none;">
+                <li>Martes 2 de julio</li>
+                <li>Lunes 5 de agosto</li>
+                <li>Martes 10 de septiembre</li>
+                <li>Lunes 7 de octubre</li>
+                <li>Martes 12 de noviembre</li>
+                <li>Lunes 9 de diciembre</li>
+            </ul>
+            <button onclick="openSpreadsheet('https://drive.google.com/drive/folders/1mOhFcf6yHZuIIpDmeWz3afzNZuz-5uje?usp=drive_link')">Resúmenes reuniones</button>
+            <button onclick="openSpreadsheet('https://drive.google.com/file/d/1XyDopUZhfHXkxZGXJnEa5UdmhqjR7HI1/view?usp=sharing')">Estatuto</button>
         </section>
         <section id="materiales" class="content-section" style="display:none;">
             <h2>Materiales</h2>
@@ -57,3 +68,4 @@
     </main>
 </body>
 </html>
+
