@@ -25,7 +25,7 @@ header img.app-logo {
 }
 
 header h1 {
-    font-size: 2.5rem; /* Make the h1 smaller */
+    font-size: 1.5rem; /* Make the h1 smaller */
     margin: 0;
     flex: 1; /* Allow h1 to take up remaining space */
     text-align: center; /* Center text */
@@ -99,6 +99,19 @@ h2 {
 .content-section button:active {
     background-color: #003f7f;
     transform: translateY(0);
+}
+
+/* Fieldset styles */
+fieldset {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+legend {
+    font-weight: bold;
+    color: #0056b3;
 }
 
 @media (max-width: 768px) {
