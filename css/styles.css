@@ -1,4 +1,4 @@
-/* Estilos generales */
+//* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -115,7 +115,7 @@ legend {
     color: #0056b3;
 }
 
-/* Estilizado del listado de fechas de reuniones */
+/* Estilizado sencillo del listado de fechas de reuniones */
 #meeting-dates {
     list-style-type: none;
     padding: 0;
@@ -124,15 +124,12 @@ legend {
 }
 
 #meeting-dates li {
-    background-color: #e7f3ff;
-    border: 1px solid #0056b3;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
 }
 
-#meeting-dates li:hover {
-    background-color: #cce6ff;
+#meeting-dates li:last-child {
+    border-bottom: none;
 }
 
 @media (max-width: 768px) {
@@ -179,4 +176,3 @@ legend {
         padding: 0.75rem;
     }
 }
-
