@@ -8,6 +8,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Variable to store the event
+    let deferredPrompt;
+
+    // Event listener for beforeinstallprompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        showInstallPromotion();
+    });
+
+    // Function to show install promotion
+    function showInstallPromotion() {
+        // Show your custom install prompt here (e.g., a modal or banner)
+        const installButton = document.createElement('button');
+        installButton.textContent = 'Install App';
+        installButton.style.position = 'fixed';
+        installButton.style.bottom = '10px';
+        installButton.style.left = '10px';
+        installButton.style.padding = '1rem';
+        installButton.style.backgroundColor = '#007bff';
+        installButton.style.color = '#fff';
+        installButton.style.border = 'none';
+        installButton.style.borderRadius = '5px';
+        installButton.style.cursor = 'pointer';
+        document.body.appendChild(installButton);
+
+        installButton.addEventListener('click', () => {
+            // Hide the app provided install promotion
+            installButton.style.display = 'none';
+            // Show the install prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+            });
+        });
+    }
+
     // Función para abrir una hoja de cálculo
     window.openSpreadsheet = function(url) {
         window.open(url, '_blank');
