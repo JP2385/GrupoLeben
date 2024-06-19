@@ -4,102 +4,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the content horizontally */
-    background-color: #0056b3;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    position: relative; /* To use absolute positioning for logo */
-}
-
-header img.app-logo {
-    height: 150%; /* Increase size by 50% */
-    max-height: 3.75rem; /* Adjust max-height accordingly */
-    margin-right: 1rem;
-    position: absolute; /* Position logo absolutely */
-    left: 0.5rem; /* Align to the left with some padding */
-}
-
-header h1 {
-    font-size: 1.5rem; /* Make the h1 smaller */
-    margin: 0;
-    flex: 1; /* Allow h1 to take up remaining space */
-    text-align: center; /* Center text */
-}
-
-nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: #007bff;
-    padding: 1rem;
-    flex-wrap: wrap;
-}
-
-nav button {
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold; /* Make text bold */
-    text-transform: uppercase; /* Transform text to uppercase */
-    transition: background-color 0.3s, box-shadow 0.3s;
-    margin: 0.5rem;
-    flex: 1 1 calc(50% - 1rem); /* Two buttons per row */
-    box-sizing: border-box;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
-
-nav button:hover {
-    background-color: #003f7f;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
-}
-
-main {
-    padding: 2rem;
-}
-
-.content-section {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #333;
 }
 
 h2 {
     color: #0056b3;
-}
-
-/* Specific styles for buttons inside content sections */
-.content-section button {
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    font-size: 1rem;
-    margin: 0.5rem;
-    transition: background-color 0.3s, transform 0.3s;
-    border-radius: 5px;
-    width: calc(100% - 1rem); /* Full width minus margin */
-    box-sizing: border-box;
-}
-
-.content-section button:hover {
-    background-color: #003f7f;
-    transform: translateY(-2px);
-}
-
-.content-section button:active {
-    background-color: #003f7f;
-    transform: translateY(0);
 }
 
 /* Fieldset styles */
@@ -131,49 +40,4 @@ legend {
 
 #meeting-dates li:last-child, #upcoming-payments li:last-child {
     border-bottom: none;
-}
-
-@media (max-width: 768px) {
-    nav button {
-        flex: 1 1 100%; /* One button per row */
-    }
-
-    main {
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        justify-content: center; /* Align content to the center */
-    }
-
-    header img.app-logo {
-        position: relative; /* Change position to relative */
-        height: auto; /* Adjust size for mobile */
-        max-height: 2.5rem; /* Smaller max height for mobile */
-        margin-right: 1rem; /* Ensure space between logo and h1 */
-    }
-
-    header h1 {
-        font-size: 1.25rem; /* Slightly smaller font size */
-        text-align: center; /* Center text */
-    }
-
-    nav {
-        padding: 0.5rem;
-    }
-
-    nav button {
-        padding: 0.75rem 1rem;
-        font-size: 0.875rem;
-    }
-
-    main {
-        padding: 0.5rem;
-    }
-
-    .content-section {
-        padding: 0.75rem;
-    }
 }
