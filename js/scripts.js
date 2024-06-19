@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
     // Función para obtener el primer día hábil del mes especificado
     function getFirstWeekday(date, weekday) {
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -177,7 +178,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para crear un elemento de lista
     function createListItem(date) {
         const listItem = document.createElement('li');
-        listItem.textContent = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        listItem.textContent = date.toLocaleDateString('es-ES', options);
         return listItem;
     }
 
@@ -185,14 +187,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateUpcomingPayments() {
         const upcomingPaymentsList = document.getElementById('upcoming-payments');
         upcomingPaymentsList.innerHTML = ''; // Clear existing list items
-
+    
         const today = new Date();
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
         const currentDay = today.getDate();
-
+    
         let firstDate, secondDate;
-
+    
         if (currentDay <= 15) {
             firstDate = getPreviousBusinessDay(new Date(currentYear, currentMonth, 15));
             secondDate = getLastBusinessDay(new Date(currentYear, currentMonth));
@@ -200,10 +202,11 @@ document.addEventListener('DOMContentLoaded', function() {
             firstDate = getLastBusinessDay(new Date(currentYear, currentMonth));
             secondDate = getPreviousBusinessDay(new Date(currentYear, currentMonth + 1, 15));
         }
-
+    
         upcomingPaymentsList.appendChild(createListItem(firstDate));
         upcomingPaymentsList.appendChild(createListItem(secondDate));
     }
+
 
     // Función para obtener el día hábil anterior más cercano
     function getPreviousBusinessDay(date) {
@@ -212,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         date.setDate(date.getDate() + diff);
         return date;
     }
-
+    
     // Función para obtener el último día hábil del mes
     function getLastBusinessDay(date) {
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -221,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lastDay.setDate(lastDay.getDate() + diff);
         return lastDay;
     }
+
 
     // Inicializar fechas de reuniones y próximas liquidaciones al cargar la página
     updateMeetingDates();
