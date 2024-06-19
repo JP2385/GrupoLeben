@@ -129,7 +129,7 @@ legend {
     border-bottom: 1px solid #ccc;
 }
 
-#meeting-dates li:last-child, #upcoming-payments:last-child {
+#meeting-dates li:last-child, #upcoming-payments li:last-child {
     border-bottom: none;
 }
 
