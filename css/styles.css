@@ -116,7 +116,7 @@ legend {
 }
 
 /* Estilizado sencillo del listado de fechas de reuniones */
-#list {
+#meeting-dates {
     list-style-type: none;
     padding: 0;
     margin-top: 0.5rem;
@@ -124,12 +124,12 @@ legend {
     margin-left: 1.5rem; /* Added left margin */
 }
 
-#list li {
+#meeting-dates li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #ccc;
 }
 
-#list li:last-child {
+#meeting-dates li:last-child {
     border-bottom: none;
 }
 
