@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para obtener las próximas fechas de reuniones
     function getNextMeetingDates(startDate, numberOfMeetings) {
         const holidays = [
-            // Lista de feriados en formato 'MM-DD'
             '01-01', // Año Nuevo
             '02-24', // Carnaval
             '02-25', // Carnaval
@@ -110,23 +109,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const meetings = [];
         let date = new Date(startDate);
+        date.setDate(1); // Reset to the first day of the current month
 
         while (meetings.length < numberOfMeetings) {
-            if (date.getMonth() % 2 === 0) {
-                // Primer lunes del mes
+            const month = date.getMonth();
+            if (month % 2 === 0) {
+                // Primer lunes del mes para meses pares
                 date = getFirstWeekday(date, 1); // 1: lunes
             } else {
-                // Primer martes del mes
+                // Primer martes del mes para meses impares
                 date = getFirstWeekday(date, 2); // 2: martes
             }
 
-            if (!isHoliday(date, holidays)) {
+            if (!isHoliday(date, holidays) && date > startDate) {
                 meetings.push(new Date(date));
             }
 
             // Avanzar al próximo mes
             date.setMonth(date.getMonth() + 1);
-            date.setDate(1); // Resetear al primer día del mes
+            date.setDate(1); // Reset to the first day of the new month
+        }
+
+        // Asegurarse de que la lista siempre tenga 6 elementos
+        while (meetings.length > numberOfMeetings) {
+            meetings.shift();
         }
 
         return meetings;
