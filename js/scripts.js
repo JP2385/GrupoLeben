@@ -117,42 +117,48 @@ document.addEventListener('DOMContentLoaded', function() {
             '07-09', // Día de la Independencia
             '12-25'  // Navidad
         ];
-
+    
         const meetings = [];
         let date = new Date(startDate);
-        date.setDate(1); // Reset to the first day of the current month
-
+    
+        // Ajustar la fecha al primer día del mes siguiente si la fecha actual ya pasó
+        if (date.getDate() > 1) {
+            date.setMonth(date.getMonth() + 1);
+            date.setDate(1);
+        }
+    
         while (meetings.length < numberOfMeetings) {
             const month = date.getMonth();
             if (month % 2 === 0) {
                 // Primer lunes del mes para meses pares
-                date = getFirstWeekday(date, 1); // 1: lunes
+                date = getFirstWeekday(new Date(date.getFullYear(), month, 1), 1); // 1: lunes
             } else {
                 // Primer martes del mes para meses impares
-                date = getFirstWeekday(date, 2); // 2: martes
+                date = getFirstWeekday(new Date(date.getFullYear(), month, 1), 2); // 2: martes
             }
-
-            if (!isHoliday(date, holidays) && date > startDate) {
+    
+            if (!isHoliday(date, holidays)) {
                 meetings.push(new Date(date));
             }
-
+    
             // Avanzar al próximo mes
             date.setMonth(date.getMonth() + 1);
             date.setDate(1); // Reset to the first day of the new month
         }
-
+    
         // Asegurarse de que la lista siempre tenga 6 elementos
         while (meetings.length > numberOfMeetings) {
             meetings.shift();
         }
-
+    
         return meetings;
     }
+
 
     // Función para obtener el primer día hábil del mes especificado
     function getFirstWeekday(date, weekday) {
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        let day = firstDay.getDay();
+        const day = firstDay.getDay();
         let diff = (day <= weekday) ? (weekday - day) : (7 - day + weekday);
         if (day === weekday) {
             diff = 0;
