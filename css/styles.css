@@ -116,7 +116,7 @@ legend {
 }
 
 /* Estilizado sencillo del listado de fechas de reuniones */
-#meeting-dates {
+#meeting-dates, #upcoming-payments {
     list-style-type: none;
     padding: 0;
     margin-top: 0.5rem;
@@ -124,12 +124,12 @@ legend {
     margin-left: 1.5rem; /* Added left margin */
 }
 
-#meeting-dates li {
+#meeting-dates li, #upcoming-payments li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #ccc;
 }
 
-#meeting-dates li:last-child {
+#meeting-dates li:last-child, #upcoming-payments:last-child {
     border-bottom: none;
 }
 
