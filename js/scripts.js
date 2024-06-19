@@ -72,62 +72,79 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleMeetingDates = function() {
         const meetingDates = document.getElementById('meeting-dates');
         if (meetingDates.style.display === 'none') {
+            updateMeetingDates();
             meetingDates.style.display = 'block';
         } else {
             meetingDates.style.display = 'none';
         }
     }
 
-    // Función para toggle de próximas liquidaciones
-    window.toggleUpcomingPayments = function() {
-        const upcomingPayments = document.getElementById('upcoming-payments');
-        if (upcomingPayments.style.display === 'none') {
-            updateUpcomingPayments();
-            upcomingPayments.style.display = 'block';
-        } else {
-            upcomingPayments.style.display = 'none';
-        }
-    }
-
-    // Función para actualizar las fechas de próximas liquidaciones
-    function updateUpcomingPayments() {
-        const upcomingPaymentsList = document.getElementById('upcoming-payments');
-        upcomingPaymentsList.innerHTML = ''; // Clear existing list items
+    // Función para actualizar las fechas de reuniones
+    function updateMeetingDates() {
+        const meetingDatesList = document.getElementById('meeting-dates');
+        meetingDatesList.innerHTML = ''; // Clear existing list items
 
         const today = new Date();
-        const currentMonth = today.getMonth();
-        const currentYear = today.getFullYear();
-        const currentDay = today.getDate();
+        const meetingDates = getNextMeetingDates(today, 6);
 
-        let firstDate, secondDate;
+        meetingDates.forEach(date => {
+            meetingDatesList.appendChild(createListItem(date));
+        });
+    }
 
-        if (currentDay <= 15) {
-            firstDate = getPreviousBusinessDay(new Date(currentYear, currentMonth, 15));
-            secondDate = getLastBusinessDay(new Date(currentYear, currentMonth + 1, 0));
-        } else {
-            firstDate = getLastBusinessDay(new Date(currentYear, currentMonth, 0));
-            secondDate = getPreviousBusinessDay(new Date(currentYear, currentMonth + 1, 15));
+    // Función para obtener las próximas fechas de reuniones
+    function getNextMeetingDates(startDate, numberOfMeetings) {
+        const holidays = [
+            // Lista de feriados en formato 'MM-DD'
+            '01-01', // Año Nuevo
+            '02-24', // Carnaval
+            '02-25', // Carnaval
+            '03-24', // Día de la Memoria
+            '04-02', // Día del Veterano y de los Caídos en la Guerra de Malvinas
+            '05-01', // Día del Trabajador
+            '05-25', // Día de la Revolución de Mayo
+            '06-20', // Día de la Bandera
+            '07-09', // Día de la Independencia
+            '12-25'  // Navidad
+        ];
+
+        const meetings = [];
+        let date = new Date(startDate);
+
+        while (meetings.length < numberOfMeetings) {
+            if (date.getMonth() % 2 === 0) {
+                // Primer lunes del mes
+                date = getFirstWeekday(date, 1); // 1: lunes
+            } else {
+                // Primer martes del mes
+                date = getFirstWeekday(date, 2); // 2: martes
+            }
+
+            if (!isHoliday(date, holidays)) {
+                meetings.push(new Date(date));
+            }
+
+            // Avanzar al próximo mes
+            date.setMonth(date.getMonth() + 1);
+            date.setDate(1); // Resetear al primer día del mes
         }
 
-        upcomingPaymentsList.appendChild(createListItem(firstDate));
-        upcomingPaymentsList.appendChild(createListItem(secondDate));
+        return meetings;
     }
 
-    // Función para obtener el día hábil anterior más cercano
-    function getPreviousBusinessDay(date) {
-        const day = date.getDay();
-        const diff = (day === 0) ? -2 : (day === 6) ? -1 : 0;
-        date.setDate(date.getDate() + diff);
-        return date;
+    // Función para obtener el primer día hábil del mes especificado
+    function getFirstWeekday(date, weekday) {
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const day = firstDay.getDay();
+        const diff = (day <= weekday) ? (weekday - day) : (7 - day + weekday);
+        firstDay.setDate(firstDay.getDate() + diff);
+        return firstDay;
     }
 
-    // Función para obtener el último día hábil del mes
-    function getLastBusinessDay(date) {
-        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        const day = lastDay.getDay();
-        const diff = (day === 0) ? -2 : (day === 6) ? -1 : 0;
-        lastDay.setDate(lastDay.getDate() + diff);
-        return lastDay;
+    // Función para verificar si una fecha es feriado
+    function isHoliday(date, holidays) {
+        const monthDay = ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+        return holidays.includes(monthDay);
     }
 
     // Función para crear un elemento de lista
@@ -136,4 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         listItem.textContent = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
         return listItem;
     }
+
+    // Inicializar fechas de reuniones al cargar la página
+    updateMeetingDates();
 });
