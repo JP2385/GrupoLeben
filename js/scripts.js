@@ -117,16 +117,16 @@ document.addEventListener('DOMContentLoaded', function() {
             '07-09', // Día de la Independencia
             '12-25'  // Navidad
         ];
-
+    
         const meetings = [];
         let date = new Date(startDate);
-
+    
         // Ajustar la fecha al primer día del mes siguiente si la fecha actual ya pasó
         if (date.getDate() > 1) {
             date.setMonth(date.getMonth() + 1);
             date.setDate(1);
         }
-
+    
         while (meetings.length < numberOfMeetings) {
             const month = date.getMonth();
             if ((month + 1) % 2 === 0) {
@@ -136,23 +136,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Primer martes del mes para meses impares
                 date = getFirstWeekday(new Date(date.getFullYear(), month, 1), 2); // 2: martes
             }
-
+    
             if (!isHoliday(date, holidays) && date > startDate) {
                 meetings.push(new Date(date));
             }
-
+    
             // Avanzar al próximo mes
             date.setMonth(date.getMonth() + 1);
             date.setDate(1); // Reset to the first day of the new month
         }
-
+    
         // Asegurarse de que la lista siempre tenga 6 elementos
         while (meetings.length > numberOfMeetings) {
             meetings.shift();
         }
-
+    
         return meetings;
     }
+
+
 
     // Función para obtener el primer día hábil del mes especificado
     function getFirstWeekday(date, weekday) {
@@ -175,8 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para crear un elemento de lista
     function createListItem(date) {
         const listItem = document.createElement('li');
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        listItem.textContent = date.toLocaleDateString('es-ES', options);
+        listItem.textContent = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
         return listItem;
     }
 
@@ -225,9 +226,3 @@ document.addEventListener('DOMContentLoaded', function() {
     updateMeetingDates();
     updateUpcomingPayments();
 });
-
-    // Inicializar fechas de reuniones y próximas liquidaciones al cargar la página
-    updateMeetingDates();
-    updateUpcomingPayments();
-});
-
