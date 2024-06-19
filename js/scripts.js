@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         while (meetings.length < numberOfMeetings) {
             const month = date.getMonth();
-            if (month % 2 === 0) {
+            if ((month + 1) % 2 === 0) {
                 // Primer lunes del mes para meses pares
                 date = getFirstWeekday(new Date(date.getFullYear(), month, 1), 1); // 1: lunes
             } else {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 date = getFirstWeekday(new Date(date.getFullYear(), month, 1), 2); // 2: martes
             }
     
-            if (!isHoliday(date, holidays)) {
+            if (!isHoliday(date, holidays) && date > startDate) {
                 meetings.push(new Date(date));
             }
     
@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         return meetings;
     }
+
 
 
     // Función para obtener el primer día hábil del mes especificado
