@@ -125,11 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
         while (meetings.length < numberOfMeetings) {
             const month = date.getMonth();
             if (month % 2 === 0) {
-                // Primer lunes del mes para meses pares
-                date = getFirstWeekday(date, 1); // 1: lunes
+                // Primer martes del mes para meses pares
+                date = getFirstWeekday(date, 2); // 1: lunes
             } else {
-                // Primer martes del mes para meses impares
-                date = getFirstWeekday(date, 2); // 2: martes
+                // Primer lunes del mes para meses impares
+                date = getFirstWeekday(date, 1); // 2: martes
             }
 
             if (!isHoliday(date, holidays) && date > startDate) {
