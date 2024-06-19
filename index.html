@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="json/manifest.json">
     <meta name="theme-color" content="#0056b3">
-    <script src="js/utils.js" defer></script>
-    <script src="js/serviceWorker.js" defer></script>
-    <script src="js/promotions.js" defer></script>
-    <script src="js/spreadsheets.js" defer></script>
-    <script src="js/sections.js" defer></script>
-    <script src="js/meetings.js" defer></script>
-    <script src="js/payments.js" defer></script>
+    <script src="js/scripts.js" defer></script>
 </head>
 <body>
     <header>
@@ -55,7 +49,9 @@
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1gZCYAAnxdkvHWiVFM3DfMyzfKu9IDgfg45H95GWufGk/edit?usp=sharing')">Resumen de Liquidaciones</button>
             <button onclick="openSpreadsheet('https://docs.google.com/spreadsheets/d/1ondWWdxWX3So_pRfAgMhOkel8mMEgsJO4okDtE5TZSY/edit?usp=drive_link')">Resumen de Ingresos</button>
             <button onclick="toggleUpcomingPayments()">Próximas liquidaciones</button>
-            <ul id="upcoming-payments" style="display:none;"></ul>
+            <ul id="upcoming-payments" style="display:none;">
+                <!-- Las fechas serán insertadas dinámicamente -->
+            </ul>
         </section>
         <section id="reuniones" class="content-section" style="display:none;">
             <h2>Reuniones y Estatuto</h2>
