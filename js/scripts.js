@@ -79,6 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Función para toggle de próximas liquidaciones
+    window.toggleUpcomingPayments = function() {
+        const upcomingPayments = document.getElementById('upcoming-payments');
+        if (upcomingPayments.style.display === 'none') {
+            updateUpcomingPayments();
+            upcomingPayments.style.display = 'block';
+        } else {
+            upcomingPayments.style.display = 'none';
+        }
+    }
+
     // Función para actualizar las fechas de reuniones
     function updateMeetingDates() {
         const meetingDatesList = document.getElementById('meeting-dates');
@@ -141,8 +152,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para obtener el primer día hábil del mes especificado
     function getFirstWeekday(date, weekday) {
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        const day = firstDay.getDay();
-        const diff = (day <= weekday) ? (weekday - day) : (7 - day + weekday);
+        let day = firstDay.getDay();
+        let diff = (day <= weekday) ? (weekday - day) : (7 - day + weekday);
+        if (day === weekday) {
+            diff = 0;
+        }
         firstDay.setDate(firstDay.getDate() + diff);
         return firstDay;
     }
@@ -160,6 +174,49 @@ document.addEventListener('DOMContentLoaded', function() {
         return listItem;
     }
 
-    // Inicializar fechas de reuniones al cargar la página
+    // Función para actualizar las fechas de próximas liquidaciones
+    function updateUpcomingPayments() {
+        const upcomingPaymentsList = document.getElementById('upcoming-payments');
+        upcomingPaymentsList.innerHTML = ''; // Clear existing list items
+
+        const today = new Date();
+        const currentMonth = today.getMonth();
+        const currentYear = today.getFullYear();
+        const currentDay = today.getDate();
+
+        let firstDate, secondDate;
+
+        if (currentDay <= 15) {
+            firstDate = getPreviousBusinessDay(new Date(currentYear, currentMonth, 15));
+            secondDate = getLastBusinessDay(new Date(currentYear, currentMonth));
+        } else {
+            firstDate = getLastBusinessDay(new Date(currentYear, currentMonth));
+            secondDate = getPreviousBusinessDay(new Date(currentYear, currentMonth + 1, 15));
+        }
+
+        upcomingPaymentsList.appendChild(createListItem(firstDate));
+        upcomingPaymentsList.appendChild(createListItem(secondDate));
+    }
+
+    // Función para obtener el día hábil anterior más cercano
+    function getPreviousBusinessDay(date) {
+        const day = date.getDay();
+        const diff = (day === 0) ? -2 : (day === 6) ? -1 : 0;
+        date.setDate(date.getDate() + diff);
+        return date;
+    }
+
+    // Función para obtener el último día hábil del mes
+    function getLastBusinessDay(date) {
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const day = lastDay.getDay();
+        const diff = (day === 0) ? -2 : (day === 6) ? -1 : 0;
+        lastDay.setDate(lastDay.getDate() + diff);
+        return lastDay;
+    }
+
+    // Inicializar fechas de reuniones y próximas liquidaciones al cargar la página
     updateMeetingDates();
+    updateUpcomingPayments();
 });
+
