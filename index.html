@@ -18,6 +18,7 @@
     <script src="js/meetings.js" defer></script>
     <script src="js/payments.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/facturacion.js" defer></script>
 </head>
 <body>
     <header>
@@ -43,13 +44,29 @@
             <h2>Facturación y Nomenclado</h2>
             <fieldset>
                 <legend>Neuquén</legend>
-                <button onclick="openSpreadsheet('https://drive.google.com/drive/folders/1QwmzonmW_KPGX_DWjaWRyzDCrWMnb5oY?usp=drive_link')">Nomencladores</button>
-                <button onclick="openSpreadsheet('https://drive.google.com/file/d/1QtMQM642jhLQPl9A-Et4HxemkyIrqku2/view?usp=drive_link')">Nomenclado ISSN</button>
+                <button onclick="toggleNomencladoresneuquen()">Nomencladores</button>
+                <ul id="nomencladores-list-nqn" class="hidden" style="display:none;">
+                    <li><a href="https://drive.google.com/file/d/1qS6kYSzh839uY0q_K_RFlKwYDSK0c56r/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> Complejidades</a></li>
+                    <li><a href="https://drive.google.com/file/d/1jSSkiXIWHD5sBDBkCYvH3JTGXuRjQj_O/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> ISSN</a></li>
+                    <li><a href="https://drive.google.com/file/d/1CfkqYI6d1Is44_2HprhQ1RlRBZgV8-ON/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> Niveles</a></li>
+                    <li><a href="https://drive.google.com/file/d/1UmgxOdnOn_AXt2gJs76dALfWSRcduDih/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> OSDE</a></li>
+                    <li><a href="https://drive.google.com/file/d/1G7h0u650U9y39iUP4heaKxwIxuOGFOve/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> OSPEPRI</a></li>
+                </ul>
+                <button onclick="openSpreadsheet('https://drive.google.com/file/d/1QtMQM642jhLQPl9A-Et4HxemkyIrqku2/view?usp=drive_link')">Instructivo ISSN</button>
                 <button onclick="openSpreadsheet('https://drive.google.com/file/d/1TREExIbZmoKcOdS5RUwxX7f_tKjUK-J3/view?usp=drive_link')">Nomenclador por O.S</button>
             </fieldset>
             <fieldset>
                 <legend>Río Negro</legend>
-                <button onclick="openSpreadsheet('https://drive.google.com/drive/folders/1R-sU7dqFjLFTtCSyedYY9sghSg-mgkYY?usp=sharing')">Nomencladores</button>
+                <button onclick="toggleNomencladoresrionegro()">Nomencladores</button>
+                <ul id="nomencladores-list-rn" class="hidden" style="display:none;">
+                    <li><a href="https://drive.google.com/file/d/1vb7ZeUgggrDCXRvLdNdf8ewQjCqOSZwt/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> ARAAR 2015</a></li>
+                    <li><a href="https://drive.google.com/file/d/1lyBxPOq78zfdfgAYqfJLFOhcUQnlCKDe/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> ARAAR 2018</a></li>
+                    <li><a href="https://drive.google.com/file/d/1ucXPTH36aYWAosTWHWG7kQJhOeuoPabp/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> ARAAR 2022</a></li>
+                    <li><a href="https://drive.google.com/file/d/1tZwE2drmMs_k7IEQHtT0I5TajGOmCaO9/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> ISSN</a></li>
+                    <li><a href="https://drive.google.com/file/d/1t_n0KrS91wWrbuemFCX2v-aw2rxHnDh7/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> OSDE</a></li>
+                    <li><a href="https://drive.google.com/file/d/1LBt0piXrQkohi2Isvt9Hsq76VKs7v2Pw/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> OSDE</a></li>
+                    <li><a href="https://drive.google.com/file/d/1TFUlB0oSmXuR6VIF9qCKboBomMypI_IH/view?usp=drive_link" target="_blank"><img src="images/icons/pdf-icon.png" alt="PDF"> OSPEPRI</a></li>
+                </ul>
                 <button onclick="openSpreadsheet('https://docs.google.com/document/d/1Qi-4nLkx5JaC6ENG58FqGUWTfMmmB86n/edit?usp=drive_link&ouid=116849778907664010256&rtpof=true&sd=true')">Nomenclado sugerido</button>
                 <button onclick="openSpreadsheet('https://drive.google.com/file/d/1QqyHrtqT5lYKlDh7KKsF6noO7EJdeYxV/view?usp=drive_link')">Pautas según O.S.</button>
             </fieldset>

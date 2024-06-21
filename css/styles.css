@@ -25,7 +25,7 @@ legend {
 }
 
 /* Estilizado sencillo del listado de fechas de reuniones */
-#meeting-dates, #upcoming-payments {
+#meeting-dates, #upcoming-payments, #nomencladores-list-nqn, #nomencladores-list-rn {
     list-style-type: none;
     padding: 0;
     margin-top: 0.5rem;
@@ -33,11 +33,35 @@ legend {
     margin-left: 1.5rem; /* Added left margin */
 }
 
-#meeting-dates li, #upcoming-payments li {
+#meeting-dates li, #upcoming-payments li, #nomencladores-list-nqn li, #nomencladores-list-rn li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #ccc;
 }
 
-#meeting-dates li:last-child, #upcoming-payments li:last-child {
+#meeting-dates li:last-child, 
+#upcoming-payments li:last-child, 
+#nomencladores-list-nqn li:last-child, 
+#nomencladores-list-rn li:last-child {
     border-bottom: none;
+}
+
+#nomencladores-list-nqn li a, 
+#nomencladores-list-rn li a {
+    text-decoration: none;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+}
+
+#nomencladores-list-nqn li a img,
+#nomencladores-list-rn li a img {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#nomencladores-list-nqn li a:hover,
+#nomencladores-list-rn li a:hover {
+    text-decoration: underline;
 }
