@@ -19,11 +19,21 @@
     <script src="js/payments.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/facturacion.js" defer></script>
+    <script src="js/menu.js" defer></script>
 </head>
 <body>
     <header>
-        <img src="images/logo/logo.png" alt="Logo Anestesiólogos del Valle" class="app-logo">
+        <a href="index.html" class="app-logo-link">
+            <img src="images/logo/logo.png" alt="Logo Anestesiólogos del Valle" class="app-logo">
+        </a>
         <h1>Anestesiólogos del Valle</h1>
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="profile.html">Mi perfil</a>
+            <a href="login.html" id="logout">Cerrar sesión</a>
+        </div>
     </header>
     <nav>
         <button onclick="showSection('programacion')">Programación</button>

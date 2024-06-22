@@ -1,21 +1,26 @@
-/* Estilos del header */
+/* Asegurar que el enlace que contiene el logo no altere el diseño */
+.app-logo-link {
+    position: absolute; /* Mantener la posición absoluta */
+    left: 0.5rem; /* Alinear a la izquierda con algo de padding */
+    top: 50%; /* Posicionar en el centro verticalmente */
+    transform: translateY(-50%); /* Centrar verticalmente */
+}
+
 header {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the content horizontally */
+    justify-content: center; /* Centrar el contenido horizontalmente */
     background-color: #0056b3;
     color: white;
     padding: 1rem;
     text-align: center;
-    position: relative; /* To use absolute positioning for logo */
+    position: relative; /* Para usar posicionamiento absoluto para el logo */
 }
 
 header img.app-logo {
-    height: 150%; /* Increase size by 50% */
-    max-height: 3.75rem; /* Adjust max-height accordingly */
+    height: auto; /* Ajustar altura a auto */
+    max-height: 3.75rem; /* Ajustar max-height según corresponda */
     margin-right: 1rem;
-    position: absolute; /* Position logo absolutely */
-    left: 0.5rem; /* Align to the left with some padding */
 }
 
 header h1 {
@@ -25,9 +30,42 @@ header h1 {
     text-align: center; /* Center text */
 }
 
+.hamburger-menu {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    width: 150px;
+    text-align: left;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
 @media (max-width: 480px) {
     header {
-        justify-content: center; /* Align content to the center */
+        justify-content: space-between; /* Cambiado a space-between */
     }
 
     header img.app-logo {
@@ -40,5 +78,13 @@ header h1 {
     header h1 {
         font-size: 1.25rem; /* Slightly smaller font size */
         text-align: center; /* Center text */
+    }
+    
+    .hamburger-menu {
+        display: block; /* Show hamburger menu on mobile */
+    }
+    
+    nav {
+        display: none; /* Hide regular nav on mobile */
     }
 }

@@ -7,3 +7,4 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(sectionId).style.display = 'block';
     }
 });
+
