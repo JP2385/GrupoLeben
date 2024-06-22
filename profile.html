@@ -1,16 +1,16 @@
+<!-- profile.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil - Anestesiólogos del Valle</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css"> <!-- Usar login.css para estilos compartidos -->
     <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <script src="js/profile.js" defer></script>
+    <script src="js/forms.js" defer></script>
 </head>
 <body>
     <header>
@@ -19,12 +19,12 @@
         </a>
         <h1>Anestesiólogos del Valle</h1>
     </header>
-    <main class="profile-container">
+    <main class="form-container">
         <h2>Mi Perfil</h2>
         <div class="profile-info" id="profile-info">
             <p><strong>Nombre:</strong> <span id="profile-name">Juan Pérez</span></p>
             <p><strong>Correo Electrónico:</strong> <span id="profile-email">juan.perez@example.com</span></p>
-            <button onclick="toggleChangePassword()">Cambiar Contraseña</button>
+            <button onclick="toggleChangePassword()" class="main-menu-button">Cambiar Contraseña</button>
         </div>
         <div class="change-password-form" id="change-password-form" style="display: none;">
             <h3>Cambiar Contraseña</h3>
@@ -49,9 +49,10 @@
                     <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password')">👁️</span>
                 </div>
             </div>
-            <button onclick="confirmChangePassword()">Confirmar</button>
+            <button onclick="confirmChangePassword()" class="main-menu-button">Confirmar</button>
         </div>
         <button onclick="goToMainMenu()" class="main-menu-button">Volver al Menú Principal</button>
     </main>
 </body>
 </html>
+
