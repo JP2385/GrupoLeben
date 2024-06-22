@@ -62,3 +62,17 @@ header h1 {
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
 }
+
+.back-to-main-menu, .back-to-login {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+.back-to-main-menu:hover, .back-to-login:hover {
+    color: #ccc; /* Cambia el color al pasar el mouse */
+}
