@@ -76,3 +76,12 @@ header h1 {
 .back-to-main-menu:hover, .back-to-login:hover {
     color: #ccc; /* Cambia el color al pasar el mouse */
 }
+
+@media (max-width: 480px) {
+    .back-to-main-menu, .back-to-login {
+        font-size: 1.25rem;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
