@@ -8,6 +8,7 @@ header {
     padding: 1rem;
     text-align: center;
     position: relative;
+    height: 45px; /* Ajusta la altura según sea necesario */
 }
 
 .app-logo-link {
@@ -68,20 +69,11 @@ header h1 {
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
-    color: white;
     text-decoration: none;
 }
 
-.back-to-main-menu:hover, .back-to-login:hover {
-    color: #ccc; /* Cambia el color al pasar el mouse */
-}
-
-@media (max-width: 480px) {
-    .back-to-main-menu, .back-to-login {
-        font-size: 1.25rem;
-        right: 0.75rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+.back-icon {
+    width: 36px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    transform: rotate(180deg); /* Rota la imagen 180 grados */
 }
