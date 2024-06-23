@@ -20,10 +20,8 @@ nav button {
     flex: 1 1 calc(50% - 1rem);
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-nav button:hover {
+nav button.active, nav button:hover {
     background-color: #003f7f;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
 }
