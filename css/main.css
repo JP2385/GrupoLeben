@@ -10,12 +10,13 @@ main {
 }
 
 .content-section button {
-    background-color: #0056b3;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 1rem 2rem;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bold;
     margin: 0.5rem;
     transition: background-color 0.3s, transform 0.3s;
     border-radius: 10px;
@@ -25,7 +26,7 @@ main {
 }
 
 .content-section button:hover {
-    background-color: #003f7f;
+    background-color: #0056b3;
     transform: translateY(-2px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
 }
