@@ -1,6 +1,6 @@
 @media (max-width: 768px) {
     header {
-        justify-content: space-between; /* Cambiado a space-between */
+        justify-content: space-between;
     }
 
     header img.app-logo {
@@ -11,7 +11,7 @@
     }
 
     .back-icon {
-            width: 30px; /* Tamaño para dispositivos móviles */
+        width: 30px;
     }
     
     header h1 {
@@ -19,15 +19,16 @@
         text-align: center;
     }
 
-    nav button {
+    nav button, .content-section button {
         flex: 1 1 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
     }
 
     main {
         padding: 1rem;
     }
 }
-
 
 @media (max-width: 480px) {
     header {
@@ -50,7 +51,8 @@
         padding: 0.5rem;
     }
 
-    nav button {
+    nav button, .content-section button {
+        flex: 1 1 100%;
         padding: 0.75rem 1rem;
         font-size: 0.875rem;
     }

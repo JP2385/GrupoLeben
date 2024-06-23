@@ -18,14 +18,16 @@ main {
     font-size: 1rem;
     margin: 0.5rem;
     transition: background-color 0.3s, transform 0.3s;
-    border-radius: 5px;
+    border-radius: 10px;
     width: calc(100% - 1rem);
     box-sizing: border-box;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 .content-section button:hover {
     background-color: #003f7f;
     transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
 }
 
 .content-section button:active {
