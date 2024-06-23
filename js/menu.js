@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const dropdownMenu = document.getElementById('dropdown-menu');
 
-    hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita que el evento se propague al documento
         dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'block' : 'none';
     });
 
@@ -12,5 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
     logoutLink.addEventListener('click', (e) => {
         e.preventDefault();
         window.location.href = 'login.html';
+    });
+
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', (e) => {
+        if (dropdownMenu.style.display === 'block') {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
+    // Evitar el cierre del menú al hacer clic dentro de él
+    dropdownMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 });
