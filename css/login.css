@@ -89,6 +89,26 @@
     background-color: #0056b3;
 }
 
+/* Estilos para el checkbox y la etiqueta "Recuérdame" */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.remember-me input[type="checkbox"] {
+    transform: scale(1.25);
+    margin-right: 10px;
+}
+
+.remember-me label {
+    color: #0056b3;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
 /* Estilos para enlaces */
 #forgot-password {
     display: block;
