@@ -103,8 +103,8 @@
     -moz-appearance: none;
     appearance: none;
     /* Estilo personalizado */
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background-color: #fff; /* Color de fondo del checkbox */
     border: 1px solid #ddd;
     border-radius: 5px; /* Bordes redondeados */
