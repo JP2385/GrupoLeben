@@ -30,7 +30,7 @@
     }
 
     .remember-me input[type="checkbox"] {
-        margin-left: -2px;
+        margin-left: -4px;
     }
 }
 
@@ -70,6 +70,6 @@
     }
 
     .remember-me input[type="checkbox"] {
-        margin-left: 30px;
+        margin-left: 2.5px;
     }
 }
