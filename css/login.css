@@ -1,3 +1,4 @@
+
 /* Estilos para los contenedores de formularios */
 .form-container {
     max-width: 400px;
@@ -98,9 +99,29 @@
 }
 
 .remember-me input[type="checkbox"] {
-    transform: scale(1.25);
-    margin-right: 10px;
-    margin-left: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Estilo personalizado */
+    width: 20px;
+    height: 20px;
+    background-color: #fff; /* Color de fondo del checkbox */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Bordes redondeados */
+    outline: none;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: -1px;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: #007bff; /* Color de fondo cuando está seleccionado */
+    border: 2px solid #007bff; /* Borde del checkbox cuando está seleccionado */
+    background-image: url('../images/check.svg');
+    /* background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M20.2929 5.29289C20.6834 5.68342 20.6834 6.31658 20.2929 6.70711L9.70711 17.2929C9.31658 17.6834 8.68342 17.6834 8.29289 17.2929L3.70711 12.7071C3.31658 12.3166 3.31658 11.6834 3.70711 11.2929C4.09763 10.9024 4.7308 10.9024 5.12132 11.2929L9 15.1716L18.8787 5.29289C19.2692 4.90237 19.9024 4.90237 20.2929 5.29289Z" style="stroke:white; stroke-width:3;"/%3E%3C/svg%3E'); */
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .remember-me label {
