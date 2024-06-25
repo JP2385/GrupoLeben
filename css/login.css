@@ -100,7 +100,7 @@
 .remember-me input[type="checkbox"] {
     transform: scale(1.25);
     margin-right: 10px;
-    margin-left: -0.5px;
+    margin-left: 0.5px;
 }
 
 .remember-me label {
