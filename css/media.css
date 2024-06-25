@@ -28,6 +28,10 @@
     main {
         padding: 1rem;
     }
+
+    .remember-me input[type="checkbox"] {
+        margin-left: 1px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -63,5 +67,9 @@
 
     .content-section {
         padding: 0.75rem;
+    }
+
+    .remember-me input[type="checkbox"] {
+        margin-left: 1px;
     }
 }
