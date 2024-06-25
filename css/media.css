@@ -6,7 +6,7 @@
     header img.app-logo {
         position: relative;
         height: auto;
-        max-height: 2.5rem;
+        max-height: 3rem;
         margin-right: 1rem;
     }
 
@@ -70,6 +70,6 @@
     }
 
     .remember-me input[type="checkbox"] {
-        margin-left: 2px;
+        margin-left: 3px;
     }
 }
