@@ -63,11 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    // El token es válido, no es necesario cambiar el contenido de la página
-                    console.log('Token verificado correctamente');
+                    return response.text();
                 } else {
                     throw new Error('Failed to authenticate token');
                 }
+            })
+            .then(html => {
+                document.documentElement.innerHTML = html;
             })
             .catch(error => {
                 alert(error.message);
