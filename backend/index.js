@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const cors = require('cors');
 const authRoutes = require('./src/app/routes/authRoutes');
+const authMiddleware = require('./src/app/middlewares/authMiddleware'); // Asegúrate de importar el middleware de autenticación
 const path = require('path');
 
 const app = express();
@@ -14,6 +15,17 @@ mongoose.connect(config.mongoUri)
     .then(() => console.log('Connected to MongoDB'))
     .catch(error => console.error('Error connecting to MongoDB:', error));
 
+// Redirigir a login.html por defecto
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/login.html'));
+});
+
+// Rutas autenticadas
+app.get('/index.html', authMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+// Otras rutas
 app.use('/auth', authRoutes);
 
 app.use(express.static(path.join(__dirname, '../frontend')));
