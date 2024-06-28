@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    // Continuar con la carga de la página
+                    console.log('Token verificado correctamente');
                 } else {
                     throw new Error('Failed to authenticate token');
                 }
