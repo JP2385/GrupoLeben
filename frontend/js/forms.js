@@ -1,17 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar spinner
     const showSpinner = () => document.getElementById('spinner').style.display = 'block';
     const hideSpinner = () => document.getElementById('spinner').style.display = 'none';
 
     // Verificar el token en localStorage al cargar la página de index.html
     if (window.location.pathname === '/index.html') {
-        console.log('Página index.html cargada');
         const token = localStorage.getItem('token');
+        console.log('Token:', token); // Agregar esta línea para verificar si el token está presente
         if (!token) {
-            console.log('No se encontró token en localStorage');
             window.location.href = 'login.html';
         } else {
-            console.log('Token encontrado en localStorage:', token);
-            fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/verify', {
+            fetch('https://grupoleben-92f01f246848.herokuapp.com/index.html', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .then(response => {
-                console.log('Respuesta de la verificación:', response);
                 if (response.ok) {
                     return response.text();
                 } else {
@@ -27,11 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .then(html => {
-                console.log('Token verificado, actualizando el contenido de la página');
                 document.documentElement.innerHTML = html;
             })
             .catch(error => {
-                console.error('Error en la verificación del token:', error.message);
+                alert(error.message);
                 localStorage.removeItem('token');
                 window.location.href = 'login.html';
             });
