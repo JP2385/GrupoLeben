@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!token) {
             window.location.href = 'login.html';
         } else {
-            fetch('https://grupoleben-92f01f246848.herokuapp.com/index.html', {
+            fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/verify', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,13 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    return response.text();
+                    // Continuar con la carga de la página
                 } else {
                     throw new Error('Failed to authenticate token');
                 }
-            })
-            .then(html => {
-                document.documentElement.innerHTML = html;
             })
             .catch(error => {
                 alert(error.message);

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const cors = require('cors');
 const authRoutes = require('./src/app/routes/authRoutes');
-const authMiddleware = require('./src/app/middlewares/authMiddleware'); // Asegúrate de importar el middleware de autenticación
+const authMiddleware = require('./src/app/middlewares/authMiddleware'); 
 const path = require('path');
 
 const app = express();
@@ -18,6 +18,11 @@ mongoose.connect(config.mongoUri)
 // Redirigir a login.html por defecto
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/login.html'));
+});
+
+// Ruta para verificar el token
+app.get('/auth/verify', authMiddleware, (req, res) => {
+    res.status(200).send({ message: 'Token is valid' });
 });
 
 // Rutas autenticadas
