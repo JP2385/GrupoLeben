@@ -2,6 +2,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const showSpinner = () => document.getElementById('spinner').style.display = 'block';
     const hideSpinner = () => document.getElementById('spinner').style.display = 'none';
 
+    // Verificar el token en localStorage al cargar la página de index.html
+    if (window.location.pathname === '/index.html') {
+        console.log('Página index.html cargada');
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log('No se encontró token en localStorage');
+            window.location.href = 'login.html';
+        } else {
+            console.log('Token encontrado en localStorage:', token);
+            fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/verify', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(response => {
+                console.log('Respuesta de la verificación:', response);
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Failed to authenticate token');
+                }
+            })
+            .then(html => {
+                console.log('Token verificado, actualizando el contenido de la página');
+                document.documentElement.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error en la verificación del token:', error.message);
+                localStorage.removeItem('token');
+                window.location.href = 'login.html';
+            });
+        }
+    }
+
     // Login form submission
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
@@ -46,42 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 hideSpinner();
             }
         });
-    }
-
-    // Verificar el token en localStorage al cargar la página de index.html
-    if (window.location.pathname === '/index.html') {
-        console.log('Página index.html cargada');
-        const token = localStorage.getItem('token');
-        if (!token) {
-            console.log('No se encontró token en localStorage');
-            window.location.href = 'login.html';
-        } else {
-            console.log('Token encontrado en localStorage:', token);
-            fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/verify', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-            .then(response => {
-                console.log('Respuesta de la verificación:', response);
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error('Failed to authenticate token');
-                }
-            })
-            .then(html => {
-                console.log('Token verificado, actualizando el contenido de la página');
-                document.documentElement.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('Error en la verificación del token:', error.message);
-                localStorage.removeItem('token');
-                window.location.href = 'login.html';
-            });
-        }
     }
 
     // Cargar datos de inicio de sesión si remember-me está activado
