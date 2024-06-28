@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
 
             try {
-                const response = await fetch('http://localhost:3000/auth/login', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
 
             try {
-                const response = await fetch('http://localhost:3000/auth/register', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                const response = await fetch('http://localhost:3000/auth/change-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/change-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
 
             try {
-                const response = await fetch('http://localhost:3000/auth/recover-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/recover-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                const response = await fetch('http://localhost:3000/auth/reset-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/reset-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('http://localhost:3000/auth/profile', {
+        fetch('https://grupoleben-92f01f246848.herokuapp.com//auth/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
