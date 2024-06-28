@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('remember-me') ? document.getElementById('remember-me').checked : false;
+            const rememberMe = document.getElementById('remember-me').checked;
 
             showSpinner();
 
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
+                    // El token es válido, no es necesario cambiar el contenido de la página
                     console.log('Token verificado correctamente');
                 } else {
                     throw new Error('Failed to authenticate token');
@@ -84,9 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (savedUsername && savedPassword) {
             document.getElementById('username').value = savedUsername;
             document.getElementById('password').value = savedPassword;
-            if (document.getElementById('remember-me')) {
-                document.getElementById('remember-me').checked = true;
-            }
+            document.getElementById('remember-me').checked = true;
         }
     }
 
