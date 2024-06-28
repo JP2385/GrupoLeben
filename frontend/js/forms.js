@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('remember-me').checked;
+            const rememberMe = document.getElementById('remember-me') ? document.getElementById('remember-me').checked : false;
 
             showSpinner();
 
@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (savedUsername && savedPassword) {
             document.getElementById('username').value = savedUsername;
             document.getElementById('password').value = savedPassword;
-            document.getElementById('remember-me').checked = true;
+            if (document.getElementById('remember-me')) {
+                document.getElementById('remember-me').checked = true;
+            }
         }
     }
 
