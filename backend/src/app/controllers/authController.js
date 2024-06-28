@@ -1,126 +1,157 @@
-// backend/src/app/controllers/authController.js
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
 const config = require('../../../config');
+const nodemailer = require('nodemailer');
 
-exports.register = async (req, res) => {
+const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        // Verificar si el usuario ya existe
-        const existingUser = await User.findOne({ username });
+        // Check if the user already exists
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).send({ message: 'Username already exists' });
+            return res.status(400).send({ message: 'User already exists' });
         }
 
+        // Create a new user
         const user = new User({ username, email, password });
         await user.save();
+
         res.status(201).send({ message: 'User registered successfully' });
     } catch (error) {
-        res.status(400).send({ message: error.message });
+        res.status(500).send({ message: 'Error registering user', error });
     }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { username, password } = req.body;
+
+        // Find the user by username
         const user = await User.findOne({ username });
-        if (!user || !(await user.comparePassword(password))) {
-            throw new Error('Invalid username or password');
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
         }
+
+        // Check if the password is correct
+        const isPasswordValid = await user.comparePassword(password);
+        if (!isPasswordValid) {
+            return res.status(401).send({ message: 'Invalid password' });
+        }
+
+        // Generate a token
         const token = jwt.sign({ userId: user._id }, config.jwtSecret, { expiresIn: '1h' });
+
         res.send({ token });
     } catch (error) {
-        res.status(400).send({ message: error.message });
+        res.status(500).send({ message: 'Error logging in', error });
     }
 };
 
-exports.getProfile = async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(token, config.jwtSecret);
-        const user = await User.findById(decoded.userId).select('-password');
-        if (!user) {
-            throw new Error('User not found');
-        }
-        res.send(user);
-    } catch (error) {
-        res.status(400).send({ message: error.message });
-    }
-};
-
-exports.changePassword = async (req, res) => {
+const changePassword = async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body;
-        const userId = req.userId; // Assuming you have middleware to extract userId from JWT
+        const userId = req.userId;
 
         const user = await User.findById(userId);
-        if (!user || !(await user.comparePassword(currentPassword))) {
-            throw new Error('Current password is incorrect');
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        const isPasswordValid = await user.comparePassword(currentPassword);
+        if (!isPasswordValid) {
+            return res.status(401).send({ message: 'Invalid current password' });
         }
 
         user.password = newPassword;
         await user.save();
+
         res.send({ message: 'Password changed successfully' });
     } catch (error) {
-        res.status(400).send({ message: error.message });
+        res.status(500).send({ message: 'Error changing password', error });
     }
 };
 
-exports.recoverPassword = async (req, res) => {
+const getProfile = async (req, res) => {
+    try {
+        const userId = req.userId;
+
+        const user = await User.findById(userId).select('-password');
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.send(user);
+    } catch (error) {
+        res.status(500).send({ message: 'Error fetching profile', error });
+    }
+};
+
+const recoverPassword = async (req, res) => {
     try {
         const { email } = req.body;
+
         const user = await User.findOne({ email });
         if (!user) {
-            throw new Error('User with this email does not exist');
+            return res.status(404).send({ message: 'User not found' });
         }
 
         const token = jwt.sign({ userId: user._id }, config.jwtSecret, { expiresIn: '1h' });
-        const link = `https://grupoleben-92f01f246848.herokuapp.com/reset-password.html?token=${token}`;
 
-        // Configura el transporter de nodemailer
         const transporter = nodemailer.createTransport({
-            service: 'gmail', // o cualquier otro servicio de correo
+            service: 'gmail',
             auth: {
-                user: 'anestesiafunda@gmail.com',
-                pass: 'ockakxakspclgqqp',
+                user: config.emailUser,
+                pass: config.emailPass
             }
         });
 
-        // Enviar el correo
         const mailOptions = {
-            from: 'your_email@gmail.com',
+            from: config.emailUser,
             to: email,
             subject: 'Password Recovery',
-            text: `Click the following link to reset your password: ${link}`
+            text: `Click the link to reset your password: ${req.headers.origin}/reset-password.html?token=${token}`
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return res.status(500).send({ message: 'Error sending email: ' + error.message });
-            }
-            res.send({ message: 'Password recovery email sent' });
-        });
+        await transporter.sendMail(mailOptions);
 
+        res.send({ message: 'Password recovery email sent' });
     } catch (error) {
-        res.status(400).send({ message: error.message });
+        res.status(500).send({ message: 'Error sending recovery email', error });
     }
 };
 
-exports.resetPassword = async (req, res) => {
+const resetPassword = async (req, res) => {
     try {
         const { token, newPassword } = req.body;
+
         const decoded = jwt.verify(token, config.jwtSecret);
-        const user = await User.findById(decoded.userId);
+        const userId = decoded.userId;
+
+        const user = await User.findById(userId);
         if (!user) {
-            throw new Error('User not found');
+            return res.status(404).send({ message: 'User not found' });
         }
 
         user.password = newPassword;
         await user.save();
+
         res.send({ message: 'Password reset successfully' });
     } catch (error) {
-        res.status(400).send({ message: error.message });
+        res.status(500).send({ message: 'Error resetting password', error });
     }
+};
+
+const verifyToken = (req, res) => {
+    res.status(200).send({ message: 'Token is valid' });
+};
+
+module.exports = {
+    register,
+    login,
+    changePassword,
+    getProfile,
+    recoverPassword,
+    resetPassword,
+    verifyToken
 };

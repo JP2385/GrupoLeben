@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, changePassword, getProfile, recoverPassword, resetPassword } = require('../controllers/authController');
+const { register, login, changePassword, getProfile, recoverPassword, resetPassword, verifyToken } = require('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const router = express.Router();
 
@@ -8,10 +8,8 @@ router.post('/login', login);
 router.post('/recover-password', recoverPassword);
 router.post('/reset-password', resetPassword);
 router.post('/change-password', authMiddleware, changePassword);
-router.get('/profile', authMiddleware, getProfile);
-router.get('/verify', authMiddleware, (req, res) => {
-    res.status(200).send({ message: 'Token is valid' });
-});
+router.get('/profile', getProfile);
+router.get('/verify', authMiddleware, verifyToken); // Añade esta línea
 
 module.exports = router;
 
