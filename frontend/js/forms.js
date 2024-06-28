@@ -2,75 +2,64 @@ document.addEventListener('DOMContentLoaded', function() {
     const showSpinner = () => document.getElementById('spinner').style.display = 'block';
     const hideSpinner = () => document.getElementById('spinner').style.display = 'none';
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mostrar spinner
-        function showSpinner() {
-            document.getElementById('spinner').style.display = 'block';
-        }
-    
-        // Ocultar spinner
-        function hideSpinner() {
-            document.getElementById('spinner').style.display = 'none';
-        }
-    
-        // Login form submission
-        const loginForm = document.getElementById('login-form');
-        if (loginForm) {
-            loginForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                const rememberMe = document.getElementById('remember-me').checked;
-    
-                showSpinner();
-    
-                try {
-                    const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username, password })
-                    });
-    
-                    if (response.ok) {
-                        const data = await response.json();
-                        localStorage.setItem('token', data.token);
-                        if (rememberMe) {
-                            localStorage.setItem('rememberMe', 'true');
-                            localStorage.setItem('username', username);
-                            localStorage.setItem('password', password);
-                        } else {
-                            localStorage.removeItem('rememberMe');
-                            localStorage.removeItem('username');
-                            localStorage.removeItem('password');
-                        }
-                        alert('Inicio de sesión exitoso');
-                        window.location.href = 'index.html';
+    // Login form submission
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+
+            showSpinner();
+
+            try {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.token);
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('password', password);
                     } else {
-                        const errorData = await response.json();
-                        alert(`Error: ${errorData.message}`);
+                        localStorage.removeItem('rememberMe');
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('password');
                     }
-                } catch (error) {
-                    alert('Hubo un problema con la solicitud: ' + error.message);
-                } finally {
-                    hideSpinner();
+                    alert('Inicio de sesión exitoso');
+                    window.location.href = 'index.html';
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message}`);
                 }
-            });
-        }
-    
-        // Cargar datos de inicio de sesión si remember-me está activado
-        const rememberMe = localStorage.getItem('rememberMe');
-        if (rememberMe === 'true') {
-            const savedUsername = localStorage.getItem('username');
-            const savedPassword = localStorage.getItem('password');
-            if (savedUsername && savedPassword) {
-                document.getElementById('username').value = savedUsername;
-                document.getElementById('password').value = savedPassword;
-                document.getElementById('remember-me').checked = true;
+            } catch (error) {
+                alert('Hubo un problema con la solicitud: ' + error.message);
+            } finally {
+                hideSpinner();
             }
+        });
+    }
+
+    // Cargar datos de inicio de sesión si remember-me está activado
+    const rememberMe = localStorage.getItem('rememberMe');
+    if (rememberMe === 'true') {
+        const savedUsername = localStorage.getItem('username');
+        const savedPassword = localStorage.getItem('password');
+        if (savedUsername && savedPassword) {
+            document.getElementById('username').value = savedUsername;
+            document.getElementById('password').value = savedPassword;
+            document.getElementById('remember-me').checked = true;
         }
-    });
+    }
+
     // Register form submission
     const registerForm = document.getElementById('register-form');
     if (registerForm) {
