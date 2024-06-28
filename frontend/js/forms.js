@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const showSpinner = () => document.getElementById('spinner').style.display = 'block';
+    const hideSpinner = () => document.getElementById('spinner').style.display = 'none';
+
     // Login form submission
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
@@ -6,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+
+            showSpinner();
 
             try {
                 const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/login', {
@@ -19,6 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     const data = await response.json();
                     localStorage.setItem('token', data.token);
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('password', password);
+                    } else {
+                        localStorage.removeItem('rememberMe');
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('password');
+                    }
                     alert('Inicio de sesión exitoso');
                     window.location.href = 'index.html';
                 } else {
@@ -27,8 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 alert('Hubo un problema con la solicitud: ' + error.message);
+            } finally {
+                hideSpinner();
             }
         });
+
+        // Remember me functionality
+        const rememberMe = localStorage.getItem('rememberMe') === 'true';
+        if (rememberMe) {
+            document.getElementById('remember-me').checked = true;
+            document.getElementById('username').value = localStorage.getItem('username');
+            document.getElementById('password').value = localStorage.getItem('password');
+        }
     }
 
     // Register form submission
@@ -49,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Deshabilitar el botón para prevenir envíos múltiples
             const submitButton = registerForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
+
+            showSpinner();
 
             try {
                 const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/register', {
@@ -71,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } finally {
                 // Rehabilitar el botón
                 submitButton.disabled = false;
+                hideSpinner();
             }
         });
     }
@@ -96,6 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
+            showSpinner();
+
             try {
                 const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/change-password', {
                     method: 'POST',
@@ -115,16 +145,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 alert('Hubo un problema con la solicitud: ' + error.message);
+            } finally {
+                hideSpinner();
             }
         };
     }
 
-// Recover password form submission
+    // Recover password form submission
     const recoverForm = document.getElementById('recover-form');
     if (recoverForm) {
         recoverForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const email = document.getElementById('email').value;
+
+            showSpinner();
 
             try {
                 const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/recover-password', {
@@ -143,10 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 alert('Hubo un problema con la solicitud: ' + error.message);
+            } finally {
+                hideSpinner();
             }
         });
     }
-
 
     // Reset password form submission
     const resetPasswordForm = document.getElementById('reset-password-form');
@@ -162,6 +197,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Las nuevas contraseñas no coinciden.');
                 return;
             }
+
+            showSpinner();
 
             try {
                 const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/reset-password', {
@@ -181,6 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 alert('Hubo un problema con la solicitud: ' + error.message);
+            } finally {
+                hideSpinner();
             }
         });
     }
@@ -194,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'login.html';
             return;
         }
+
+        showSpinner();
 
         fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/profile', {
             method: 'GET',
@@ -215,6 +256,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             alert('Hubo un problema con la solicitud: ' + error.message);
             window.location.href = 'login.html';
+        })
+        .finally(() => {
+            hideSpinner();
         });
     }
 
