@@ -11,15 +11,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Redirigir HTTP a HTTPS
-app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https') {
-        res.redirect(`https://${req.header('host')}${req.url}`);
-    } else {
-        next();
-    }
-});
-
 mongoose.connect(config.mongoUri)
     .then(() => console.log('Connected to MongoDB'))
     .catch(error => console.error('Error connecting to MongoDB:', error));
