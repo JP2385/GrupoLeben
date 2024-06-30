@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!token) {
             window.location.href = 'login.html';
         } else {
-            fetch('http://grupoleben-92f01f246848.herokuapp.com/index.html', {
+            fetch('https://grupoleben-92f01f246848.herokuapp.com/index.html', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSpinner();
 
             try {
-                const response = await fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/login', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSpinner();
 
             try {
-                const response = await fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/register', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSpinner();
 
             try {
-                const response = await fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/change-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/change-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSpinner();
 
             try {
-                const response = await fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/recover-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/recover-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSpinner();
 
             try {
-                const response = await fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/reset-password', {
+                const response = await fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/reset-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         showSpinner();
 
-        fetch('http://grupoleben-92f01f246848.herokuapp.com/auth/profile', {
+        fetch('https://grupoleben-92f01f246848.herokuapp.com/auth/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

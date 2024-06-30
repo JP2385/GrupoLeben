@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!token) {
         window.location.href = 'login.html';
     } else {
-        fetch('http://grupoleben-92f01f246848.herokuapp.com/index.html', {
+        fetch('https://grupoleben-92f01f246848.herokuapp.com/index.html', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
